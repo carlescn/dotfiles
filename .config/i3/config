@@ -7,9 +7,6 @@
 
 set $mod Mod4
 
-# Font
-font pango:DejaVu Sans Mono 10
-
 
 ##### AUTOSTART #####
 
@@ -175,27 +172,41 @@ bindsym $mod+d exec "rofi -theme fancy -show combi"
 
 ##### COSMETIC #####
 
+# Font
+font pango:DejaVu Sans Mono 10
+
 # Gaps
 gaps inner 6
 smart_gaps on
+
+# Hide titlebar
+new_window pixel
+
+# class                 border  bground text    indicator child_border
+client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
+client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
+client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
+client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
+client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+client.background       #F8F8F2
 
 
 ##### I3BAR #####
 
 bar {
 	i3bar_command i3bar --transparency
-#        status_command i3blocks -c /home/carles/.config/i3/i3blocks.conf
-        status_command i3status
+        status_command i3blocks
+#        status_command i3status
 	position top
 	colors {
-		background #00000000
-		statusline #ffffff
-		separator #666666
+        background #282A3600
+        statusline #F8F8F2
+        separator  #44475A
 
-		focused_workspace  #4c7899 #285577 #ffffff
-		active_workspace   #333333 #5f676a #ffffff
-		inactive_workspace #333333 #222222 #888888
-		urgent_workspace   #2f343a #900000 #ffffff
-		binding_mode       #2f343a #900000 #ffffff
-	}
+        focused_workspace  #44475A #44475A #F8F8F2
+        active_workspace   #282A36 #44475A #F8F8F2
+        inactive_workspace #282A36 #282A36 #BFBFBF
+        urgent_workspace   #FF5555 #FF5555 #F8F8F2
+        binding_mode       #FF5555 #FF5555 #F8F8F2
+    }
 }

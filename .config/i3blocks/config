@@ -1,0 +1,70 @@
+# i3blocks configuration file
+#
+# The i3blocks man page describes the usage of the binary,
+# and its website describes the configuration:
+#
+#     https://vivien.github.io/i3blocks
+
+
+# Global properties
+color=#f8f8f2
+markup=pango
+separator=true
+separator_block_width=20
+
+[dnf_updates]
+command=dnf check-update --refresh --quiet | grep -c ^[a-z0-9]
+#command=dnf check-update --quiet | grep -c ^[a-z0-9]
+interval=once
+label= 
+color=#1793d1
+
+[cpu]
+command=sar -u 1 | awk 'FNR > 3 { printf "%04.1f%\n", (100 - $8); fflush(stdout) }'
+interval=persist
+label= 
+#separator=false
+#separator_block_width=10
+
+[memory]
+command=free --human | awk '/^Mem:/ { printf "%0.1fG\n", $7 }'
+label= 
+interval=5
+
+[temp_cpu]
+command=sensors | awk '/^Package id 0:/ { printf "%iºC\n", $4 }'
+interval=10
+label= 
+separator=false
+separator_block_width=10
+
+[temp_gpu]
+command=nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader | awk '{ printf "%iºC\n", $1 }'
+interval=10
+
+[disks]
+command=df -h | awk 'BEGIN{i=0} { if(/\/(|home|mnt.*)$/) { if(i>0){printf " "} printf "%iG",$4; i++ } } END{print ""}'
+interval=10
+label=<span weight="bold"> </span>
+
+[date]
+command=date '+%Y-%m-%d'
+interval=1
+label=<span weight="bold"> </span>
+separator=false
+separator_block_width=10
+
+[time]
+command=date '+%H:%M:%S'
+interval=1
+label=<span weight="bold"> </span>
+
+[volume]
+command=amixer sget Master | grep 'Right:' | awk -F'[][]' '{ print $2 }'
+interval=1
+label= 
+#    
+
+[separator]
+command=echo ""
+interval=once
