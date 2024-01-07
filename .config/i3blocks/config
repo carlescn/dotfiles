@@ -7,8 +7,10 @@
 
 
 # Global properties
-color=#f8f8f2
+command=$HOME/.config/i3blocks/scripts/$BLOCK_NAME
 markup=pango
+color=#f8f8f2
+align=right
 separator=true
 separator_block_width=20
 
@@ -19,13 +21,9 @@ label=
 color=#1793d1
 
 [nordvpn]
-command=/home/carles/.config/i3blocks/scripts/nordvpn.sh
 interval=30
-#   
-
 
 [bandwidth]
-command=/home/carles/.config/i3blocks/scripts/bandwidth.sh
 interval=persist
 label= 
 
