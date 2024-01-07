@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+
+###################################################################
+# Script Name : volume
+# Description : Script for i3blocks to monitor and manipulate volume using pactl.
+# Args        : None
+# Author      : CarlesCN
+# E-mail      : carlesbioinformatics@gmail.com
+# License     : GNU General Public License v3.0
+###################################################################
+
+set -e -u -o pipefail
+
+
+function get_mute_state {
+  pactl get-sink-mute @DEFAULT_SINK@ | awk '/^Mute:/ {print $2}'
+}
+
+function get_volume {
+  pactl get-sink-volume @DEFAULT_SINK@ | awk '/^Volume:/ {printf "%3i",$5}'
+}
+
+
+# Manipulate volume with mouse
+if [[ -v BLOCK_BUTTON ]]; then
+  case ${BLOCK_BUTTON} in
+    1) #Left
+       pavucontrol ;;
+   #2) #Middle
+    3) #Right
+       pactl set-sink-mute @DEFAULT_SINK@ toggle ;;
+    4) #Scroll Up
+       if [[ "$(get_volume)" -eq 0 ]]; then pactl set-sink-mute @DEFAULT_SINK@ 0; fi
+       if [[ "$(get_volume)" -lt 100 ]]; then pactl set-sink-volume @DEFAULT_SINK@ +10%; fi
+       ;;
+    5) #Scroll Down
+       pactl set-sink-volume @DEFAULT_SINK@ -10%
+       if [[ "$(get_volume)" -eq 0 ]]; then pactl set-sink-mute @DEFAULT_SINK@ 1; fi
+       ;;
+   #8) #Upper Thumb
+   #9) #Lower Thumb
+   #6,7,10+) #Custom
+  esac
+fi
+
+
+# Show volume level
+volume="$(get_volume)"
+
+if [[ "$(get_mute_state)" == "yes" ]]; then label=""; alt_color="#ff0000"
+# Dynamic icons: have different widths! :(
+# elif [[ ${volume} -lt 40 ]]; then label="";
+# elif [[ ${volume} -lt 80 ]]; then label="";
+# elif [[ ${volume} -ge 80 ]]; then label="";
+else label="";
+fi
+
+echo "${label}${volume}%" # full_text
+echo ""                   # short_text
+if [[ -v alt_color ]]; then echo "${alt_color}"; fi

@@ -66,10 +66,9 @@ interval=1
 label=<span weight="bold"> </span>
 
 [volume]
-command=if [ $button ]; then pavucontrol; else amixer sget Master | grep 'Right:' | awk -F'[][]' '{ print $2 }'; fi
-interval=1
-label= 
-#    
+interval=once
+signal=10
+min_width=50
 
 [separator]
 full_text=""
