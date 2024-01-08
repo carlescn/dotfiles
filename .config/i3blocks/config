@@ -14,6 +14,12 @@ align=right
 separator=true
 separator_block_width=20
 
+[window_title]
+interval=persist
+min_width=850
+align=center
+separator=false
+
 [dnf_updates]
 command=dnf check-update --refresh --quiet | awk '{count++} END{if(count>0) print count}'
 interval=21600 #6h
