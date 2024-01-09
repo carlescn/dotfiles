@@ -21,7 +21,7 @@ align=center
 separator=false
 
 [dnf_updates]
-command=dnf check-update --refresh --quiet | awk '{count++} END{if(count>0) print count}'
+command=dnf check-update --refresh --quiet | awk '!/^$/ {count++} END{if(count>0) print count}'
 interval=21600 #6h
 label= 
 color=#1793d1
