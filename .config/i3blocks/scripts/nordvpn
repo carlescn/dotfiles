@@ -11,22 +11,43 @@
 
 set -e -u -o pipefail
 
-nordvpn status | awk -F'[ .]' \
-'
-  # first line has some invisible space prefixed (wtf?)
-  /Status:/ {
-    if ($6 == "Disconnected") {
-      print " Disconnected"
-      print "" # short text
-      print "#ff0000"
-      exit 33 # send alert to i3bar
-    }
-  }
+red="#ff0000"
+green="#00ff00"
 
-  /^Hostname:/ {
-    print "",$2
-    print "" # short text
-    print "#00ff00"
-  }
+# Status line has some invisible fields prefixed (wtf?)
+status=$(nordvpn status | awk '/Status:/ {print $4}')
 
-'
+# Short server name
+text=$(nordvpn status | awk -F'[ .]' '/^Hostname:/ {print $2}')
+
+
+# Manipulate volume with mouse
+if [[ -v BLOCK_BUTTON ]]; then
+  case ${BLOCK_BUTTON} in
+    1) #Left
+       if ! [[ "${full_text}" =~ ^..[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*$ ]]; then
+         text=$(nordvpn status | awk '/^IP:/ {print $2}')
+       fi
+       ;;
+   #2) #Middle
+   #3) #Right
+   #4) #Scroll Up
+   #5) #Scroll Down
+   #8) #Upper Thumb
+   #9) #Lower Thumb
+   #6,7,10+) #Custom
+  esac
+fi
+
+# Show status (disconnected)
+if [[ "${status}" == Disconnected ]]; then
+  echo " Disconnected"
+  echo "" #short text
+  echo "${red}"
+  exit 33 # send alert to i3bar
+fi
+
+# Show status (connected)
+echo " ${text}"
+echo "" #short text
+echo "${green}"
