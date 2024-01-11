@@ -3,6 +3,7 @@
 ###################################################################
 # Script Name : window_title
 # Description : Script for i3blocks to display focused window title.
+#             : Subscrive to i3 events and updates on every window / workspace change.
 #             : Adapted from https://github.com/vivien/i3blocks-contrib/blob/master/sway-focusedwindow/sway-focusedwindow
 # Args        : None
 # Author      : CarlesCN
@@ -12,15 +13,22 @@
 
 set -e -u -o pipefail
 
-# Focused window on script init
-i3-msg -t get_tree | jq --unbuffered -r '.. | select(.focused?) | .name'
+# Empty string on desktop init
+echo ""
 
 
-# Update title for each focus update
+# Build query
+# Clean on closing window
+query="if .change == \"close\" then \"\" else "
 
-# Title name
-query='select ( (.container.focused or .current.focused) and (.change == "focus" or .change == "title" or .change == "close") ) | .container.name[0:80] // ""'
-# Class name
-#query='select ( (.container.focused or .current.focused) and .change == "focus" ) | .container.window_properties.class // ""'
+# Show title name
+query+='select ( (.container.focused or .current.focused) and (.change == "focus" or .change == "title" or .change == "close") ) | .container.name[0:60] // ""'
+# Show class name
+#query+='select ( (.container.focused or .current.focused) and .change == "focus" ) | .container.window_properties.class // ""'
 
+# Close if
+query+=" end"
+
+
+# Subscribe to events
 i3-msg -m -t subscribe '["window", "workspace"]' | jq --unbuffered -r "${query}"

@@ -16,7 +16,7 @@ separator_block_width=20
 
 [window_title]
 interval=persist
-min_width=800
+min_width=700
 align=center
 separator=false
 
