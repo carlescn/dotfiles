@@ -1,0 +1,16 @@
+configuration {
+	modes: "combi,window";
+	combi-modes: "drun,run";
+	sidebar-mode: true;
+	font: "mono 12";
+	show-icons: true;
+/*	icon-theme: ;*/
+  timeout {
+      action: "kb-cancel";
+      delay:  0;
+  }
+  filebrowser {
+      directories-first: true;
+      sorting-method:    "name";
+  }
+}
