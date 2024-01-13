@@ -11,22 +11,27 @@
 
 set -e -u -o pipefail
 
+# Define colors
 red="#ff0000"
 green="#00ff00"
 
+
+# Get NordVPN info
 # Status line has some invisible fields prefixed (wtf?)
 status=$(nordvpn status | awk '/Status:/ {print $4}')
+text_server=$(nordvpn status | awk -F'[ .]' '/^Hostname:/ {print $2}')
+text_ip=$(nordvpn status | awk '/^IP:/ {print $2}')
 
-# Short server name
-text=$(nordvpn status | awk -F'[ .]' '/^Hostname:/ {print $2}')
+# Defautlt text: short server name
+text=$text_server
 
-
-# Manipulate volume with mouse
+# Respond to mouse events
 if [[ -v BLOCK_BUTTON ]]; then
   case ${BLOCK_BUTTON} in
     1) #Left
-       if ! [[ "${full_text}" =~ ^..[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*$ ]]; then
-         text=$(nordvpn status | awk '/^IP:/ {print $2}')
+       # Toggle text: IP / server name
+       if [[ -v full_text ]] && ! [[ "${full_text}" =~ ^..[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*$ ]]; then
+         text=$text_ip
        fi
        ;;
    #2) #Middle
