@@ -3,7 +3,7 @@
 ###################################################################
 # Script Name : bandwith
 # Description : Script to monitor network bandwith in i3blocks.
-# Args        : $1 interval between updates, in seconds
+# Args        : $1 interval between updates, in seconds. Must be a number.
 # Author      : CarlesCN
 # E-mail      : carlesbioinformatics@gmail.com
 # License     : GNU General Public License v3.0
@@ -11,25 +11,51 @@
 
 set -e -u -o pipefail
 
-[[ $# -gt 0 ]] && timer=$1 || timer=1
+# Control arguments
+bad_args="This scripts only accepts one argument and it must be a number."
 
+case $# in
+  0) timer=1
+     ;;
+  1) if [[ $1 =~ ^[0-9]*$ ]]; then
+       timer=$1;
+     else
+       echo "${bad_args}"
+       exit 1
+     fi
+     ;;
+  *) echo "Too many arguments!"
+     echo "${bad_args}"
+     exit 1
+     ;;
+esac
+
+
+# Print lines
 while true;
   do cat /proc/net/dev;
   sleep "$timer";
 done | awk -v timer="$timer" \
 '
   function printDelta(bytes, last) {
-      bits = (bytes - last) * 8
+    bits = ((bytes - last) * 8) / timer
 
-    if(     bits > 1024**3) { printf "%3iGb", (bits / (1024 ** 3) * timer) }
-    else if(bits > 1024**2) { printf "%3iMb", (bits / (1024 ** 2) * timer) }
-    else if(bits > 1024)    { printf "%3iKb", (bits / 1024) * timer}
-    else                    { printf "%4ib", bits * timer}
+    if(     bits > 1024**3) { printf "%3iGb", (bits / (1024 ** 3)) }
+    else if(bits > 1024**2) { printf "%3iMb", (bits / (1024 ** 2)) }
+    else if(bits > 1024)    { printf "%3iKb", (bits / 1024) }
+    else                    { printf "%4ib", bits }
   }
 
+  # First line would show the amount of data transmitted since system started.
+  BEGIN { firstLine = 0 }
+
   /^enp3s0:/ {
-	printDelta($2,  lastR); printf " "
-	printDelta($10, lastT); printf "\n"
+	if (firstLine) {
+	  printDelta($2,  lastR); printf " "
+	  printDelta($10, lastT); printf "\n"
+	} else {
+	  firstLine = 1
+	}
 
     lastR = $2;
     lastT = $10;
