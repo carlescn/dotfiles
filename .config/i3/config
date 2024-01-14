@@ -44,6 +44,9 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 
 ##### WINDOWS #####
 
+# Disable focus on mouse hover
+focus_follows_mouse no
+
 # Drag windows using mouse
 floating_modifier $mod
 tiling_drag modifier titlebar
