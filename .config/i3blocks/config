@@ -26,17 +26,24 @@ interval=21600 #6h
 label= 
 color=#1793d1
 
-[nordvpn]
-interval=30
+[time]
+command=date '+%H:%M:%S'
+interval=1
+label= 
+separator=false
+separator_block_width=10
 
-[bandwidth]
-interval=persist
-label= 
+[date]
+command=date '+%Y-%m-%d'
+interval=1
+#label=<span weight="bold"> </span>
 
 [cpu]
 command=sar -u 1 | awk 'FNR > 3 { printf "%04.1f%\n", (100 - $8); fflush(stdout) }'
 interval=persist
 label= 
+separator=false
+separator_block_width=10
 
 [memory]
 command=free --human | awk '/^Mem:/ { printf "%0.1fG\n", $7 }'
@@ -59,22 +66,19 @@ command=df -h | awk '/\/(|home|mnt.*)$/ { {if(i>0){printf " "}} printf "%iG",$4;
 interval=10
 label=<span weight="bold"> </span>
 
-[date]
-command=date '+%Y-%m-%d'
-interval=1
-label=<span weight="bold"> </span>
-separator=false
-separator_block_width=10
+[nordvpn]
+interval=30
 
-[time]
-command=date '+%H:%M:%S'
-interval=1
-label=<span weight="bold"> </span>
+[bandwidth]
+interval=persist
+label= 
 
 [volume]
 interval=once
 signal=10
 min_width=50
+separator=false
+separator_block_width=10
 
 [separator]
 full_text=""
