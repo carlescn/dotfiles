@@ -24,6 +24,9 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
+# Bluetooth tray applet
+exec_always --no-startup-id blueman-applet
+
 # Start compositor to enable transparency
 exec --no-startup-id picom -c --config /home/carles/.config/picom/picom.conf
 
