@@ -27,5 +27,8 @@ unset rc
 # Color prompt
 PS1="\[\033[1;32m\]\u@\h:\[\033[34m\]\w\[\033[00;1m\]\\$\[\033[00m\] "
 
+# Force dark theme for GT3 apps
+export GTK_THEME=Adwaita:dark
+
 # Aliases
 alias git-dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
