@@ -1,5 +1,28 @@
 [font]
-size = 9.0
+size = 10
+
+[font.normal]
+#family = "LiterationMono Nerd Font" #compact lines
+#family = "CommitMono Nerd Font"     #compact lines
+#family = "DejaVuSansM Nerd Font"    #midspaced lines
+family = "SauceCodePro Nerd Font"   #spaced lines
+#family = "JetBrainsMono Nerd Font"  #spaced lines
+style = "Regular"
+
+[font.bold]
+family = "SauceCodePro Nerd Font"   #spaced lines
+#family = "JetBrainsMono Nerd Font"
+style = "Bold"
+
+[font.bold_italic]
+family = "SauceCodePro Nerd Font"   #spaced lines
+#family = "JetBrainsMono Nerd Font"
+style = "Bold Italic"
+
+[font.italic]
+family = "SauceCodePro Nerd Font"   #spaced lines
+#family = "JetBrainsMono Nerd Font"
+style = "Italic"
 
 [window]
 dynamic_title = true

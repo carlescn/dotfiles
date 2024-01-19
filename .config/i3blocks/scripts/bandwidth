@@ -11,8 +11,13 @@
 
 set -e -u -o pipefail
 
+# Labels
+#labels=('' '')
+#labels=('󰶼' '󰶹')
+labels=('󰶣' '󰶡')
+
 # Control arguments
-bad_args="This scripts only accepts one argument and it must be a number."
+bad_args='This scripts only accepts one argument and it must be a number.'
 
 case $# in
   0) timer=1
@@ -24,7 +29,7 @@ case $# in
        exit 1
      fi
      ;;
-  *) echo "Too many arguments!"
+  *) echo 'Too many arguments!'
      echo "${bad_args}"
      exit 1
      ;;
@@ -35,7 +40,7 @@ esac
 while true;
   do cat /proc/net/dev;
   sleep "$timer";
-done | awk -v timer="$timer" \
+done | awk -v timer="$timer" -v label_up="${labels[0]}" -v label_down="${labels[1]}" \
 '
   function printDelta(bytes, last) {
     bits = ((bytes - last) * 8) / timer
@@ -49,10 +54,11 @@ done | awk -v timer="$timer" \
   # First line would show the amount of data transmitted since system started.
   BEGIN { firstLine = 0 }
 
-  /^enp3s0:/ {
+  # TODO: parametrize device name
+  /^enp6s0:/ {
 	if (firstLine) {
-	  printDelta($2,  lastR); printf " "
-	  printDelta($10, lastT); printf "\n"
+	  printDelta($2,  lastR); printf "%1s ", label_up
+	  printDelta($10, lastT); printf "%1s\n", label_down
 	} else {
 	  firstLine = 1
 	}

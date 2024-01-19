@@ -178,7 +178,7 @@ bindsym $mod+d exec "rofi -theme fancy -show combi"
 ##### COSMETIC #####
 
 # Font
-font pango:DejaVu Sans Mono 10
+font pango:JetBrainsMono Nerd Font 11
 
 # Gaps
 gaps inner 6

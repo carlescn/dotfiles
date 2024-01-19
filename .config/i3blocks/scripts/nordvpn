@@ -46,13 +46,13 @@ fi
 
 # Show status (disconnected)
 if [[ "${status}" == Disconnected ]]; then
-  echo " Disconnected"
+  echo "󰿆 Disconnected"
   echo "" #short text
   echo "${red}"
   exit 33 # send alert to i3bar
 fi
 
 # Show status (connected)
-echo " ${text}"
+echo "󰌾 ${text}"
 echo "" #short text
 echo "${green}"

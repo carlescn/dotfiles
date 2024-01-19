@@ -47,12 +47,12 @@ fi
 # Show volume level
 volume="$(get_volume)"
 
-if [[ "$(get_mute_state)" == "yes" ]]; then label=""; alt_color="#ff0000"
+if [[ "$(get_mute_state)" == "yes" ]]; then label="󰖁"; alt_color="#ff0000"
 # Dynamic icons: have different widths! :(
 # elif [[ ${volume} -lt 40 ]]; then label="";
 # elif [[ ${volume} -lt 80 ]]; then label="";
 # elif [[ ${volume} -ge 80 ]]; then label="";
-else label="";
+else label="󰕾";
 fi
 
 echo "${label}${volume}%" # full_text

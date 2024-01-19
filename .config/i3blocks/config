@@ -23,31 +23,30 @@ separator=false
 [dnf_updates]
 command=dnf check-update --refresh --quiet | awk '!/^$/ {count++} END{if(count>0) print count}'
 interval=21600 #6h
-label= 
+label= 
 color=#1793d1
 
 [time]
 command=date '+%H:%M:%S'
 interval=1
-label= 
+label= 
 separator=false
 separator_block_width=10
 
 [date]
 command=date '+%Y-%m-%d'
-interval=1
-#label=<span weight="bold"> </span>
+interval=60
 
 [cpu]
 command=sar -u 1 | awk 'FNR > 3 { printf "%04.1f%\n", (100 - $8); fflush(stdout) }'
 interval=persist
-label= 
+label= 
 separator=false
 separator_block_width=10
 
 [memory]
 command=free --human | awk '/^Mem:/ { printf "%0.1fG\n", $7 }'
-label= 
+#label= 
 interval=5
 
 [temp_cpu]
@@ -71,7 +70,7 @@ interval=30
 
 [bandwidth]
 interval=persist
-label= 
+label=󰈀 
 
 [volume]
 interval=once
