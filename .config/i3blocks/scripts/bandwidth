@@ -57,8 +57,8 @@ done | awk -v timer="$timer" -v label_up="${labels[0]}" -v label_down="${labels[
   # TODO: parametrize device name
   /^enp6s0:/ {
 	if (firstLine) {
-	  printDelta($2,  lastR); printf "%1s ", label_up
-	  printDelta($10, lastT); printf "%1s\n", label_down
+	  printDelta($2,  lastR); printf "%1s ", label_down
+	  printDelta($10, lastT); printf "%1s\n", label_up
 	} else {
 	  firstLine = 1
 	}
