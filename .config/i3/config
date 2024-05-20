@@ -224,6 +224,7 @@ font pango:JetBrainsMono Nerd Font 11
 # Gaps
 gaps inner 6
 smart_gaps on
+hide_edge_borders both
 
 # Hide titlebar
 new_window pixel
