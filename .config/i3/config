@@ -115,7 +115,7 @@ assign [class="Thunar"] $ws3
 # Code
 assign [class="Code"] $ws5
 # E-mail
-assign [class="Thunderbird"] $ws9
+assign [class="thunderbird"] $ws9
 # Music
 assign [class="Spotify"] $ws10
 #for_window [class="Spotify"] move to workspace $workspace10
