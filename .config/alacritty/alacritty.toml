@@ -26,7 +26,7 @@ style = "Italic"
 
 [window]
 dynamic_title = true
-opacity = 0.9
+opacity = 0.99
 
 [mouse]
 hide_when_typing = true
