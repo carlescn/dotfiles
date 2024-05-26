@@ -114,6 +114,7 @@ assign [class="Nautilus"] $ws3
 assign [class="Thunar"] $ws3
 # Code
 assign [class="Code"] $ws4
+assign [class="jetbrains-pycharm-ce"] $ws4
 # E-mail
 assign [class="thunderbird"] $ws9
 # Music
