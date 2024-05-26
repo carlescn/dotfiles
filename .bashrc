@@ -43,3 +43,4 @@ export BAT_THEME="Visual Studio Dark+"
 
 # Aliases
 alias git-dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+alias ls="eza --color=always --icons=always --git"
