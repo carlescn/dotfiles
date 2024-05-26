@@ -16,9 +16,6 @@ separator_block_width=20
 
 [window_title]
 interval=persist
-min_width=700
-align=center
-separator=false
 
 [dnf_updates]
 command=dnf check-update --refresh --quiet | awk '!/^$/ {count++} END{if(count>0) print count}'
