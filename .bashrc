@@ -41,6 +41,10 @@ fi
 # Bat theme
 export BAT_THEME="Visual Studio Dark+"
 
+# Initialize zoxide (cd with history)
+eval "$(zoxide init bash)"
+
 # Aliases
 alias git-dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias ls="eza --color=always --icons=always --git"
+alias cd="z"
