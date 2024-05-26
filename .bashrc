@@ -38,5 +38,8 @@ if [ -x "$(command -v fzf)" ]; then
 	export FZF_DEFAULT_OPTS="--preview 'bat --color=always {}'"
 fi
 
+# Bat theme
+export BAT_THEME="Visual Studio Dark+"
+
 # Aliases
 alias git-dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
