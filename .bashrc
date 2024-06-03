@@ -46,5 +46,11 @@ eval "$(zoxide init bash)"
 
 # Aliases
 alias git-dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
-alias ls="eza --color=always --icons=always --git"
-alias cd="z"
+alias vpn="nordvpn"
+
+which z > /dev/null && alias cd="z"
+
+if [ -x "$(command -v eza)" ]; then
+	alias ls="eza --color=always --icons=always --git"
+	alias lls="eza --color=always --icons=always --git --long"
+fi
