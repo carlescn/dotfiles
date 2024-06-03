@@ -1,0 +1,17 @@
+# /home/carles/.anacron/anacrontab: configuration file for anacron
+
+# See anacron(8) and anacrontab(5) for details.
+
+SHELL=/bin/bash
+PATH=/sbin:/bin:/usr/sbin:/usr/bin:/home/carles/bin
+MAILTO=carles
+# the maximal random delay added to the base delay of the jobs
+RANDOM_DELAY=0
+# the jobs will be started during the following hours only
+START_HOURS_RANGE=0-24
+
+#period (days)	delay(min)	job-identifier		command
+1		5		backup.00_home_daily	rclone-jobman 00_home_daily
+7		30		backup.01_home_weekly	rclone-jobman 01_home_weekly
+7		60		backup.02_data_weekly	rclone-jobman 02_data_weekly
+7		90		backup.03_photo_weekly	rclone-jobman 03_photo_weekly
