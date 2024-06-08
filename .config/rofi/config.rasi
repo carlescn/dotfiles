@@ -14,3 +14,4 @@ configuration {
       sorting-method:    "name";
   }
 }
+@theme "/usr/share/rofi/themes/glue_pro_blue.rasi"

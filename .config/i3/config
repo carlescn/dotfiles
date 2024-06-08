@@ -61,7 +61,7 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+q kill
 
 # Menu
-bindsym $mod+d exec "rofi -theme fancy -show combi"
+bindsym $mod+d exec "rofi -show combi"
 
 
 ##### MULTIMEDIA BINDINGS #####
