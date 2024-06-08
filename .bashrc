@@ -47,6 +47,7 @@ eval "$(zoxide init bash)"
 # Aliases
 alias git-dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias vpn="nordvpn"
+alias vim="nvim"
 
 which z > /dev/null && alias cd="z"
 
