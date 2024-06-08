@@ -1,0 +1,14 @@
+[user]
+	email = 100298997+carlescn@users.noreply.github.com
+	name = carlescn
+	signingKey = 6AF005B0C1CA638F
+[core]
+	excludesFile = ~/.gitignore
+[init]
+	defaultBranch = main
+[pull]
+	ff = only
+[commit]
+	gpgSign = true
+#[credential]
+#        helper = libsecret
