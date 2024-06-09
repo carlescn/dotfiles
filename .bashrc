@@ -52,6 +52,6 @@ alias vim="nvim"
 which z > /dev/null && alias cd="z"
 
 if [ -x "$(command -v eza)" ]; then
-	alias ls="eza --color=always --icons=always --git"
-	alias lls="eza --color=always --icons=always --git --long"
+	alias ls="eza --color=always --icons=always"
+	alias lls="eza --color=always --icons=always --long"
 fi
