@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+###################################################################
+# Script Name : screenlock
+# Description : Script for i3blocks to control screen lock.
+# Args        : None
+# Author      : CarlesCN
+# E-mail      : carlesbioinformatics@gmail.com
+# License     : GNU General Public License v3.0
+###################################################################
+
+set -e -u -o pipefail
+
+function get_state {
+  xset -q | awk '/DPMS is/ { print $3 }'
+}
+
+function toggle_lock {
+  if [[ "$(get_state)" == "Enabled" ]]
+  then xset s 0 -dpms
+  else xset s 600 +dpms
+  fi
+}
+
+
+# When mouse button, only allow left and right click
+if [[ -v BLOCK_BUTTON ]]; then
+  case ${BLOCK_BUTTON} in
+    1|3) toggle_lock ;;
+  esac
+# When no mousebutton (keyboard shortcut), always toggle
+else toggle_lock
+fi
+
+
+# Show state
+if [[ "$(get_state)" == "Disabled" ]]; then label="󰅶"; alt_color="#ff0000"
+else label="󰾪";
+fi
+
+echo "${label}" # full_text
+echo ""         # short_text
+if [[ -v alt_color ]]; then echo "${alt_color}"; fi

@@ -40,6 +40,9 @@ bindsym $mod+Shift+r restart
 # Lock session
 bindsym $mod+Escape exec loginctl lock-session
 
+# Toggle screen loc
+bindsym $mod+p exec pkill -RTMIN+20 i3blocks
+
 # Exit menu
 set $mode_exit "Exit: [L]ock [E]xit [R]eboot [S]hutdown"
 bindsym $mod+Shift+e mode $mode_exit

@@ -73,3 +73,12 @@ separator_block_width=10
 [time]
 command=date '+%H:%M:%S'
 interval=1
+
+[screenlock]
+interval=once
+signal=20
+separator=false
+separator_block_width=6
+
+[spacer]
+full_text=""
