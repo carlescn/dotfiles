@@ -55,3 +55,12 @@ if [ -x "$(command -v eza)" ]; then
 	alias ls="eza --color=always --icons=always"
 	alias lls="eza --color=always --icons=always --long"
 fi
+
+function lazygit_dotfiles {
+  if [ $PWD == $HOME ] || [ $PWD == $HOME/.dotfiles ]; then
+    lazygit --git-dir=$HOME/.dotfiles/ --work-tree=$HOME
+  else
+    lazygit
+  fi
+}
+alias lg="lazygit_dotfiles"
