@@ -36,9 +36,9 @@ command=free --human | awk '/^Mem:/ { printf "%0.1fG\n", $7 }'
 interval=5
 
 [temp_cpu]
-command=sensors | awk '/^Package id 0:/ { printf "%iºC\n", $4 }'
+command=sensors | awk '/^Package id 0:/ { printf "%iC\n", $4 }'
 interval=10
-label= 
+label=
 separator=false
 separator_block_width=10
 
@@ -49,7 +49,7 @@ interval=10
 [disks]
 command=df -h | awk '/\/(|home|mnt.*)$/ { {if(i>0){printf " "}} printf "%iG",$4; i++ } END{print ""}'
 interval=10
-label=<span weight="bold"> </span>
+label= 
 
 [bandwidth]
 interval=persist
