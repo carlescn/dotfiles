@@ -63,6 +63,9 @@ bindsym $mod+q kill
 # Menu
 bindsym $mod+d exec "rofi -show combi"
 
+# Greenclip
+bindsym $mod+Shift+v exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
+
 
 ##### MULTIMEDIA BINDINGS #####
 
