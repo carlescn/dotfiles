@@ -2,7 +2,7 @@ configuration {
 	modes: "combi,window";
 	combi-modes: "drun,run";
 	sidebar-mode: true;
-	font: "mono 12";
+	font: "JetBrainsMono Nerd Font 11";
 	show-icons: true;
 /*	icon-theme: ;*/
   timeout {
