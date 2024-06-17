@@ -106,6 +106,7 @@ focus_follows_mouse no
 for_window [class="^Pavucontrol$"]  floating enable
 for_window [class="^Lxappearance$"] floating enable
 for_window [class="^Brave-browser$" title="^Bitwarden$"] floating enable
+for_window [class="^[Bb]lueman-manager$"] floating enable
 
 # Force apps to  workspaces
 # Web
