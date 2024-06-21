@@ -9,9 +9,14 @@ size = 10
 family = "JetBrainsMono Nerd Font"  #spaced lines
 style = "Regular"
 
+[mouse]
+hide_when_typing = true
+
 [window]
+dynamic_padding = true
 dynamic_title = true
 opacity = 0.99
 
-[mouse]
-hide_when_typing = true
+[window.padding]
+x = 4
+y = 4
