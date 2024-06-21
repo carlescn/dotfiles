@@ -86,9 +86,9 @@ alias git="git_dotfiles"
 # lazygit
 function lazygit_dotfiles {
   if [ $PWD == $HOME ] || [ $PWD == $HOME/.dotfiles ]; then
-    lazygit --git-dir=$HOME/.dotfiles/ --work-tree=$HOME
+    lazygit --git-dir=$HOME/.dotfiles/ --work-tree=$HOME "$@"
   else
-    lazygit
+    lazygit "$@"
   fi
 }
 alias lg="lazygit_dotfiles"
