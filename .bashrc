@@ -61,7 +61,6 @@ export BAT_THEME="Visual Studio Dark+"
 # Aliases
 ########################################
 
-alias git-dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias vpn="nordvpn"
 alias vim="nvim"
 
@@ -73,6 +72,16 @@ if [ -x "$(command -v eza)" ]; then
 	alias ls="eza --color=always --icons=always"
 	alias lls="eza --color=always --icons=always --long"
 fi
+
+# git dotfiles
+function git_dotfiles {
+  if [ $PWD == $HOME ] || [ $PWD == $HOME/.dotfiles ]; then
+	git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME "$@"
+  else
+    git "$@"
+  fi
+}
+alias git="git_dotfiles"
 
 # lazygit
 function lazygit_dotfiles {
