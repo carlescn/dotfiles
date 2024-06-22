@@ -18,17 +18,20 @@ exec --no-startup-id dex-autostart --autostart --environment i3
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --color=000000 --nofork
 
+# Start compositor to enable transparency
+exec --no-startup-id picom -c --config /home/carles/.config/picom/picom.conf
+
+# Set wallpaper
+exec --no-startup-id feh --no-fehbg --bg-fill '/home/carles/.local/share/backgrounds/motorhead_3.jpg'
+
+# Start greenclip
+exec --no-startup-id greenclip daemon
+
 # NetworkManager tray applet
 exec --no-startup-id nm-applet
 
 # Bluetooth tray applet
 exec_always --no-startup-id blueman-applet
-
-# Start compositor to enable transparency
-exec --no-startup-id picom -c --config /home/carles/.config/picom/picom.conf
-
-# Set wallpaper
-exec --no-startup-id feh --no-fehbg --bg-fill '/home/carles/.local/share/backgrounds/motorhead_3.jpg' 
 
 
 ##### APP / DESKTOP BINDINGS #####
