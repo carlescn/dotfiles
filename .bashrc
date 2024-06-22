@@ -63,6 +63,7 @@ export BAT_THEME="Visual Studio Dark+"
 
 alias vpn="nordvpn"
 alias vim="nvim"
+alias gl="git log --oneline"
 
 # cd -> z
 which z > /dev/null && alias cd="z"
