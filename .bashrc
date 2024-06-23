@@ -54,6 +54,9 @@ PS1="\[\033[1;32m\]\u@\h:\[\033[34m\]\w\[\033[00;1m\]\\$\[\033[00m\] "
 # Force dark theme for GT3 apps
 export GTK_THEME=Adwaita:dark
 
+# Force dark theme for QT5 apps
+export QT_QPA_PLATFORMTHEME=qt5ct
+
 # Bat theme
 export BAT_THEME="Visual Studio Dark+"
 
