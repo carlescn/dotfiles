@@ -234,38 +234,69 @@ mode "resize" {
 font pango:JetBrainsMono Nerd Font 11
 
 # Gaps
-gaps inner 6
+gaps inner 0
 smart_gaps on
-hide_edge_borders both
+hide_edge_borders smart
 
-# Hide titlebar
-new_window pixel
+# Border size
+new_window pixel 1
 
-# class                 border  bground text    indicator child_border
-client.focused          #F8F8F2 #6272A4 #F8F8F2 #6272A4   #F8F8F2
-client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
-client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
-client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
-client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
-client.background       #F8F8F2
+# define colors (taken from Catppuccin)
+set $rosewater #f5e0dc
+set $flamingo #f2cdcd
+set $pink #f5c2e7
+set $mauve #cba6f7
+set $red #f38ba8
+set $maroon #eba0ac
+set $peach #fab387
+set $yellow #f9e2af
+set $green #a6e3a1
+set $teal #94e2d5
+set $sky #89dceb
+set $sapphire #74c7ec
+set $blue #89b4fa
+set $lavender #b4befe
+set $text #cdd6f4
+set $subtext1 #bac2de
+set $subtext0 #a6adc8
+set $overlay2 #9399b2
+set $overlay1 #7f849c
+set $overlay0 #6c7086
+set $surface2 #585b70
+set $surface1 #45475a
+set $surface0 #313244
+# set $base #1e1e2e
+set $base #181818
+set $mantle #181825
+set $crust #11111b
+set $transparent #18181840
+
+# target                 title     bg    text   indicator  border
+client.focused           $lavender $base $text  $rosewater $green
+client.focused_inactive  $overlay0 $base $text  $rosewater $overlay0
+client.unfocused         $overlay0 $base $text  $rosewater $overlay0
+client.urgent            $peach    $base $peach $overlay0  $peach
+client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
+client.background        $base
 
 
 ##### I3BAR #####
 
 bar {
-	i3bar_command i3bar --transparency
-        status_command i3blocks
-#        status_command i3status
-	position top
-	colors {
-        background #282A3600
-        statusline #F8F8F2
-        separator  #44475A
+    i3bar_command i3bar --transparency
+    status_command i3blocks
+    position top
 
-        focused_workspace  #44475A #44475A #F8F8F2
-        active_workspace   #282A36 #44475A #F8F8F2
-        inactive_workspace #282A36 #282A36 #BFBFBF
-        urgent_workspace   #FF5555 #FF5555 #F8F8F2
-        binding_mode       #FF5555 #FF5555 #F8F8F2
+    colors {
+        background         $transparent
+        statusline         $text
+        focused_statusline $text
+        focused_separator  $surface0
+        focused_workspace  $transparent $green       $base
+        active_workspace   $transparent $blue        $base
+        inactive_workspace $transparent $transparent $surface2
+        urgent_workspace   $transparent $transparent $surface2
+        binding_mode       $red         $transparent $red
     }
 }
+
