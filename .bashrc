@@ -59,9 +59,6 @@ export GTK_THEME=Adwaita:dark
 # Force dark theme for QT5 apps
 export QT_QPA_PLATFORMTHEME=qt5ct
 
-# Bat theme
-export BAT_THEME="Visual Studio Dark+"
-
 ########################################
 # Aliases
 ########################################
