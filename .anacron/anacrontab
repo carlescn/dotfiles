@@ -12,7 +12,7 @@ START_HOURS_RANGE=0-24
 
 #period delay   job-identifier          command
 #(days) (min)
-1		5		backup.00_home_daily	rclone-jobman 00_home_daily
-7		10		backup.01_home_weekly	rclone-jobman 01_home_weekly
-7		15		backup.02_data_weekly	rclone-jobman 02_data_weekly
-7		20		backup.03_photo_weekly	rclone-jobman 03_photo_weekly
+1	5	backup.00_home_daily	rclone-tasks /home/carles/.config/rclone-tasks/tasks/00_home_daily.toml
+7	10	backup.01_git_weekly	rclone-tasks /home/carles/.config/rclone-tasks/tasks/01_git_weekly.toml
+7	15	backup.02_data_weekly	rclone-tasks /home/carles/.config/rclone-tasks/tasks/02_data_weekly.toml
+7	20	backup.03_photo_weekly	rclone-tasks /home/carles/.config/rclone-tasks/tasks/03_photo_weekly.toml
