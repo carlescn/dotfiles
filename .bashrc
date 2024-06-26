@@ -29,6 +29,8 @@ if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
 fi
 export PATH
 
+export TERMINAL="/usr/bin/alacritty"
+
 ########################################
 # Utils
 ########################################
