@@ -1,3 +1,7 @@
+import = [
+    "~/.config/alacritty/catppuccin-grey-green.toml"
+]
+
 [font]
 size = 10
 
@@ -15,7 +19,7 @@ hide_when_typing = true
 [window]
 dynamic_padding = true
 dynamic_title = true
-opacity = 0.99
+opacity = 0.95
 
 [window.padding]
 x = 4
