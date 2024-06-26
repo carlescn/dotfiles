@@ -1,0 +1,101 @@
+* {
+    green: #a6e3a1;
+    grey: #6c7086;
+
+    bg-col:  #181818;
+    fg-col: #cdd6f4;
+    selected-bg-col: #313131;
+    highlight-col: @green;
+}
+
+element-text, element-icon , mode-switcher {
+    background-color: inherit;
+    text-color:       inherit;
+}
+
+window {
+    border: 1px;
+    border-color: @highlight-col;
+    background-color: @bg-col;
+    width: 400px;
+}
+
+listview {
+    lines: 6;
+    columns: 1;
+}
+
+mainbox {
+    background-color: @bg-col;
+}
+
+inputbar {
+    children: [prompt,entry];
+    background-color: @bg-col;
+    padding: 2px;
+}
+
+prompt {
+    background-color: @highlight-col;
+    padding: 3px;
+    text-color: @bg-col;
+    margin: 10px 0px 0px 10px;
+}
+
+textbox-prompt-colon {
+    expand: false;
+    str: ":";
+}
+
+entry {
+    padding: 3px;
+    margin: 10px 0px 0px 0px;
+    text-color: @fg-col;
+    background-color: @bg-col;
+}
+
+listview {
+    margin: 10px 0px 0px 0px;
+    background-color: @bg-col;
+}
+
+element {
+    padding: 0px 0px 0px 10px;
+    background-color: @bg-col;
+    text-color: @fg-col  ;
+}
+
+element selected {
+    background-color: @selected-bg-col ;
+    text-color: @highlight-col;
+}
+
+mode-switcher {
+    spacing: 0;
+}
+
+button {
+    padding: 6px;
+    background-color: @bg-col;
+    text-color: @grey;
+    vertical-align: 0.5; 
+    horizontal-align: 0.5;
+}
+
+button selected {
+  background-color: @bg-col;
+  text-color: @highlight-col;
+}
+
+message {
+    background-color: @bg-col;
+    margin: 2px;
+    padding: 2px;
+}
+
+textbox {
+    padding: 6px;
+    text-color: @highlight-col;
+    background-color: @bg-col;
+}
+
