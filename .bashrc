@@ -51,7 +51,27 @@ fi
 ########################################
 
 # Custom prompt with color
-PS1="\[\033[1;32m\]\u@\h:\[\033[34m\]\w\[\033[00;1m\]\\$\[\033[00m\] "
+function fancy_prompt {
+    local RESET='\[\033[0;00m\]'
+    case $TERM in
+        alacritty)
+            local TRIANGLE=$'\uE0B0'
+            local USER="\[\033[43;1;30m\] \u \[\033[42;1;33m\]$TRIANGLE"
+            local HOST="\[\033[42;1;30m\] \h \[\033[44;1;32m\]$TRIANGLE"
+            local PWD="\[\033[44;1;30m\] \w \[\033[0;34m\]$TRIANGLE"
+            local END="$RESET "
+	    ;;
+        *)
+            local USER="\[\033[1;33m\]\u"
+            local HOST="\[\033[1;32m\]@\h"
+            local PWD="\[\033[1;34m\]:\w"
+            local END="$RESET \$ "
+	    ;;
+        esac
+    echo "$USER$HOST$PWD$END"
+}
+PS1="$(fancy_prompt)"
+unset fancy_prompt
 
 # Force dark theme for GT3 apps
 export GTK_THEME=Adwaita:dark
