@@ -11,6 +11,8 @@
 
 set -e -u -o pipefail
 
+red="#f38ba8"
+
 function get_state {
   xset -q | awk '/DPMS is/ { print $3 }'
 }
@@ -34,8 +36,8 @@ fi
 
 
 # Show state
-if [[ "$(get_state)" == "Disabled" ]]; then label="󰅶"; alt_color="#ff0000"
-else label="󰾪";
+if [[ "$(get_state)" == "Disabled" ]]; then label="󰅶 "; alt_color="$red"
+else label="󰾪 ";
 fi
 
 echo "${label}" # full_text

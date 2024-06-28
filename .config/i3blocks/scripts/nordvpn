@@ -12,13 +12,12 @@
 set -e -u -o pipefail
 
 # Define colors
-red="#ff0000"
-green="#00ff00"
+red="#f38bae"
+green="#a6e3a1"
 
 
 # Get NordVPN info
-# Status line has some invisible fields prefixed (wtf?)
-status=$(nordvpn status | awk '/Status:/ {print $4}')
+status=$(nordvpn status | awk '/Status:/ {print $2}')
 text_server=$(nordvpn status | awk -F'[ .]' '/^Hostname:/ {print $2}')
 text_ip=$(nordvpn status | awk '/^IP:/ {print $2}')
 
@@ -45,14 +44,14 @@ if [[ -v BLOCK_BUTTON ]]; then
 fi
 
 # Show status (disconnected)
-if [[ "${status}" == Disconnected ]]; then
-  echo "󰿆 Disconnected"
+if [[ "$status" == "Disconnected" ]]; then
+  echo " 󰿆 Disconnected "
   echo "" #short text
-  echo "${red}"
+  echo "$red"
   exit 33 # send alert to i3bar
 fi
 
 # Show status (connected)
-echo "󰌾 ${text}"
+echo "󰌾 $text"
 echo "" #short text
-echo "${green}"
+echo "$green"
