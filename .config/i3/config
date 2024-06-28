@@ -285,7 +285,7 @@ bar {
         focused_workspace  $transparent $green       $base
         active_workspace   $transparent $blue        $base
         inactive_workspace $transparent $transparent $surface2
-        urgent_workspace   $transparent $transparent $surface2
+        urgent_workspace   $transparent $red         $base
         binding_mode       $red         $transparent $red
     }
 }
