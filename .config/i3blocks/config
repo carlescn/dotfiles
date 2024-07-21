@@ -24,55 +24,32 @@ label=
 color=#1793d1
 
 [cpu]
-command=sar -u 1 | awk 'FNR > 3 { printf "%04.1f%\n", (100 - $8); fflush(stdout) }'
+command=sar -u 1 | awk 'FNR > 3 { printf "%2i%\n", (100 - $8); fflush(stdout) }'
 interval=persist
 label= 
-separator=false
-separator_block_width=10
-
-[memory]
-command=free --human | awk '/^Mem:/ { printf "%0.1fG\n", $7 }'
-#label= 
-interval=5
 
 [temp_cpu]
 command=sensors | awk '/^Package id 0:/ { printf "%iC\n", $4 }'
 interval=10
-label=
-separator=false
-separator_block_width=10
-
-[temp_gpu]
-command=nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader | awk '{ printf "%iºC\n", $1 }'
-interval=10
-
-[disks]
-command=df -h | awk '/\/(|home|mnt.*)$/ { {if(i>0){printf " "}} printf "%iG",$4; i++ } END{print ""}'
-interval=10
-label= 
-
-[bandwidth]
-interval=persist
-label=󰈀 
+label= 
 
 [nordvpn]
 interval=30
+
+[date]
+command=date '+%Y-%m-%d'
+interval=60
+label= 
+
+[time]
+command=date '+<span font_weight="bold">%H:%M:%S</span>'
+interval=1
+label= 
 
 [volume]
 interval=once
 signal=10
 min_width=50
-
-[date]
-command=date '+%Y-%m-%d'
-interval=60
-label= 
-separator=false
-separator_block_width=10
-
-[time]
-command=date '+%H:%M:%S'
-interval=1
 
 [screenlock]
 interval=once
