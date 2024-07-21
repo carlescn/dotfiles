@@ -33,6 +33,8 @@ exec --no-startup-id nm-applet
 # Bluetooth tray applet
 exec_always --no-startup-id blueman-applet
 
+# Start Conky
+exec --no-startup-id conky
 
 ##### APP / DESKTOP BINDINGS #####
 
