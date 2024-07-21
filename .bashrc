@@ -79,6 +79,9 @@ export GTK_THEME=Adwaita:dark
 # Force dark theme for QT5 apps
 export QT_QPA_PLATFORMTHEME=qt5ct
 
+# Newt (whiptail) color scheme
+export NEWT_COLORS_FILE=$HOME/.config/newt/colors
+
 ########################################
 # Aliases
 ########################################
