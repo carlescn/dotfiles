@@ -258,10 +258,10 @@ set $surface2 #585b70
 set $surface1 #45475a
 set $surface0 #313244
 # set $base #1e1e2e
-set $base #181818
+set $base #1e1e1e
 set $mantle #181825
 set $crust #11111b
-set $transparent #18181840
+set $transparent #1e1e1e40
 
 # target                 title     bg    text   indicator  border
 client.focused           $lavender $base $text  $rosewater $green

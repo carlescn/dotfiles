@@ -2,7 +2,7 @@
     green: #a6e3a1;
     grey: #6c7086;
 
-    bg-col:  #181818;
+    bg-col:  #1e1e1e;
     fg-col: #cdd6f4;
     selected-bg-col: #313131;
     highlight-col: @green;
