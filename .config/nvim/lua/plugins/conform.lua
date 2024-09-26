@@ -1,7 +1,7 @@
 -- Autoformat
 return {
 	"stevearc/conform.nvim",
-	lazy = false,
+	event = "VeryLazy",
 	keys = {
 		{
 			"<leader>f",
