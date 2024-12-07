@@ -74,6 +74,9 @@ bindsym $mod+d exec "rofi -show drun"
 # Greenclip
 bindsym $mod+Shift+v exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 
+# Screenshot
+bindsym Print exec --no-startup-id maim -o "/home/$USER/Pictures/Screenshots/$(date).png"
+bindsym Shift+Print exec --no-startup-id maim -o --select "/home/$USER/Pictures/Screenshots/$(date).png"
 
 ##### MULTIMEDIA BINDINGS #####
 
