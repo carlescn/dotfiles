@@ -76,7 +76,8 @@ PS1="$(fancy_prompt)"
 unset fancy_prompt
 
 # Force dark theme for GT3 apps
-export GTK_THEME=Adwaita:dark
+# export GTK_THEME=Adwaita:dark
+export GTK_THEME=Flat-Remix-GTK-Blue-Dark
 
 # Force dark theme for QT5 apps
 export QT_QPA_PLATFORMTHEME=qt5ct
