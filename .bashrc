@@ -30,10 +30,12 @@ fi
 export PATH
 
 export TERMINAL="/usr/bin/kitty"
+export EDITOR="/usr/bin/nvim"
 
 ########################################
 # Tools
 ########################################
+
 
 # Initialize zoxide (cd with history)
 eval "$(zoxide init bash)"
