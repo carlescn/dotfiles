@@ -86,7 +86,6 @@ export NEWT_COLORS_FILE=$HOME/.config/newt/colors
 # Aliases
 ########################################
 
-alias vpn="nordvpn"
 alias vim="nvim"
 alias gl="git log --oneline"
 
