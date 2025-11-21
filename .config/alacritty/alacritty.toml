@@ -21,6 +21,3 @@ dynamic_padding = true
 dynamic_title = true
 opacity = 0.97
 
-[window.padding]
-x = 4
-y = 4

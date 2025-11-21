@@ -69,7 +69,7 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+q kill
 
 # Menu
-bindsym $mod+d exec "rofi -show drun"
+bindsym $mod+d exec "rofi -dpi 1 -show drun"
 
 # Greenclip
 bindsym $mod+Shift+v exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
