@@ -19,8 +19,8 @@ function get_state {
 
 function toggle_lock {
   if [[ "$(get_state)" == "Enabled" ]]
-  then xset s 0 -dpms
-  else xset s 600 +dpms
+  then xset s -dpms
+  else xset s +dpms
   fi
 }
 
