@@ -33,9 +33,6 @@ command=sensors | awk '/^Package id 0:/ { printf "%iC\n", $4 }'
 interval=10
 label= 
 
-[nordvpn]
-interval=30
-
 [date]
 command=date '+%Y-%m-%d'
 interval=60
