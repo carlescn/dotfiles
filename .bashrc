@@ -1,7 +1,7 @@
 # .bashrc
 
 ########################################
-# Source other files
+# Base config
 ########################################
 
 # Source global definitions
@@ -19,35 +19,66 @@ if [ -d ~/.bashrc.d ]; then
 fi
 unset rc
 
-########################################
-# Paths
-########################################
-
-# User specific environment
+# $PATH
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
     PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
 export PATH
 
-export TERMINAL="/usr/bin/kitty"
-export EDITOR="/usr/bin/nvim"
-
 ########################################
 # Tools
 ########################################
 
+# kitty
+export TERMINAL="/usr/bin/kitty"
+
+# nvim
+export EDITOR="/usr/bin/nvim"
+alias vim="nvim"
+
+# ssh - keyring
 export SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
 
-# Initialize zoxide (cd with history)
+# zoxide (cd with history)
 eval "$(zoxide init bash)"
+which z > /dev/null && alias cd="z"
 
-# Set up fzf key bindings and fuzzy completion
+# fzf (set up key bindings and fuzzy completion)
 if [ -x "$(command -v fzf)" ]; then
     source /usr/share/fzf/shell/key-bindings.bash
-	export FZF_DEFAULT_COMMAND="fd --hidden --type f --type d --type l"
-	export FZF_CTRL_T_COMMAND="fd --hidden --type f --type d --type l"
-	export FZF_DEFAULT_OPTS="--preview 'bat --color=always {}'"
+        export FZF_DEFAULT_COMMAND="fd --hidden --type f --type d --type l"
+        export FZF_CTRL_T_COMMAND="fd --hidden --type f --type d --type l"
+        export FZF_DEFAULT_OPTS="--preview 'bat --color=always {}'"
 fi
+
+# eza (ls replacement)
+if [ -x "$(command -v eza)" ]; then
+    alias ls="eza --color=always --icons=always"
+    alias lls="eza --color=always --icons=always --long"
+fi
+
+# git
+alias gl="git log --oneline"
+
+# git dotfiles
+function git_dotfiles {
+    if [ "$PWD" == "$HOME" ] || [ "$PWD" == "$HOME/.dotfiles" ]; then
+        git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME" "$@"
+    else
+        git "$@"
+    fi
+}
+alias git="git_dotfiles"
+
+# lazygit
+function lazygit_dotfiles {
+    if [ "$PWD" == "$HOME" ] || [ "$PWD" == "$HOME/.dotfiles" ]; then
+      lazygit --git-dir="$HOME/.dotfiles/" --work-tree="$HOME" "$@"
+    else
+      lazygit "$@"
+    fi
+}
+alias lg="lazygit_dotfiles"
 
 ########################################
 # Cosmetic
@@ -63,13 +94,13 @@ function fancy_prompt {
             local HOST="\[\033[42;1;30m\] \h \[\033[44;1;32m\]$TRIANGLE"
             local PWD="\[\033[44;1;30m\] \w \[\033[0;34m\]$TRIANGLE"
             local END="$RESET "
-	    ;;
+            ;;
         *)
             local USER="\[\033[1;33m\]\u"
             local HOST="\[\033[1;32m\]@\h"
             local PWD="\[\033[1;34m\]:\w"
             local END="$RESET \$ "
-	    ;;
+            ;;
         esac
     echo "$USER$HOST$PWD$END"
 }
@@ -89,38 +120,3 @@ export NEWT_COLORS_FILE=$HOME/.config/newt/colors
 # Force X11 engine for libreofice (ugly but responsive)
 export SAL_USE_VCLPLUGIN=gen
 
-########################################
-# Aliases
-########################################
-
-alias vim="nvim"
-alias gl="git log --oneline"
-
-# cd -> z
-which z > /dev/null && alias cd="z"
-
-# ls -> eza
-if [ -x "$(command -v eza)" ]; then
-	alias ls="eza --color=always --icons=always"
-	alias lls="eza --color=always --icons=always --long"
-fi
-
-# git dotfiles
-function git_dotfiles {
-  if [ "$PWD" == "$HOME" ] || [ "$PWD" == "$HOME/.dotfiles" ]; then
-	git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME" "$@"
-  else
-    git "$@"
-  fi
-}
-alias git="git_dotfiles"
-
-# lazygit
-function lazygit_dotfiles {
-  if [ "$PWD" == "$HOME" ] || [ "$PWD" == "$HOME/.dotfiles" ]; then
-    lazygit --git-dir="$HOME/.dotfiles/" --work-tree="$HOME" "$@"
-  else
-    lazygit "$@"
-  fi
-}
-alias lg="lazygit_dotfiles"
