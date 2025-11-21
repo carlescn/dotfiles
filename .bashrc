@@ -85,6 +85,9 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 # Newt (whiptail) color scheme
 export NEWT_COLORS_FILE=$HOME/.config/newt/colors
 
+# Force X11 engine for libreofice (ugly but responsive)
+export SAL_USE_VCLPLUGIN=gen
+
 ########################################
 # Aliases
 ########################################
