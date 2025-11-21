@@ -29,10 +29,10 @@ if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
 fi
 export PATH
 
-export TERMINAL="/usr/bin/alacritty"
+export TERMINAL="/usr/bin/kitty"
 
 ########################################
-# Utils
+# Tools
 ########################################
 
 # Initialize zoxide (cd with history)
@@ -54,7 +54,7 @@ fi
 function fancy_prompt {
     local RESET='\[\033[0;00m\]'
     case $TERM in
-        alacritty)
+        alacritty|xterm-kitty)
             local TRIANGLE=$'\uE0B0'
             local USER="\[\033[43;1;30m\] \u \[\033[42;1;33m\]$TRIANGLE"
             local HOST="\[\033[42;1;30m\] \h \[\033[44;1;32m\]$TRIANGLE"
