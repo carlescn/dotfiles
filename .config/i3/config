@@ -68,7 +68,7 @@ mode $mode_exit {
 
 
 # Start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec kitty
 
 # Kill focused window
 bindsym $mod+q kill
