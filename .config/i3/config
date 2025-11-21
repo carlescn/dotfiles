@@ -18,6 +18,11 @@ exec --no-startup-id dex-autostart --autostart --environment i3
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --color=000000 --nofork
 
+# disable screensave, set display timeout to 5 min
+exec --no-startup-id xset s 0
+exec --no-startup-id xset dpms 0 0 300
+exec --no-startup-id xset +dpms
+
 # Start compositor to enable transparency
 exec --no-startup-id picom -c --config /home/carles/.config/picom/picom.conf
 
