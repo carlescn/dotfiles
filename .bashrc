@@ -37,7 +37,7 @@ export EDITOR="/usr/bin/nvim"
 alias vim="nvim"
 
 # ssh - keyring
-export SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
+export SSH_AUTH_SOCK=/run/user/$UID/keyring/ssh
 
 # zoxide (cd with history)
 eval "$(zoxide init bash)"
