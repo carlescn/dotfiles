@@ -22,7 +22,7 @@ exec --no-startup-id dex-autostart --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --ignore-empty-password --nofork --color=1e1e1eb0 --ring-color=a6e3a1 --inside-color=1e1e1e00 --keyhl-color=40a02b --bshl-color=f38ba8 --{inside,ring}ver-color=89b4fa --{inside,ring}wrong-color=f38ba8 --clock --{date,time}-color=cdd6f4 --{time,date,layout,verif,wrong,greeter}-font="JetBrainsMono Nerd Font"
 
 # disable screensaver, set display timeout to 5 min
-exec --no-startup-id xset s 0
+exec --no-startup-id xset s off
 exec --no-startup-id xset dpms 0 0 300
 exec --no-startup-id xset +dpms
 
